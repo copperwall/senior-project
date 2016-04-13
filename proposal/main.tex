@@ -1,0 +1,79 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{geometry}
+\usepackage{courier}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\geometry{margin=1in}
+
+\title{Senior Project I Proposal}
+
+\author{Chris Opperwall}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Problem Description}
+
+iFixit.com would like to update their Guide and Wiki Edit interface to use a modern WYSIWYG text editor. A WYSIWYG editor differs from their current implementation, which requires the user to input specific wiki syntax which is later rendered into HTML. A WYSIWYG editor allows the user to view and edit the rendered result. While this style of editor can improve usability, iFixit’s web framework is set up to receive wiki syntax from the edit interface, while most WYSIWYG editors output HTML or JSON. This project will build a parser to transform the output of the WYSIWYG editor into iFixit’s custom wiki syntax in order to maintain the current set of functionality iFixit’s current editor provides.
+
+\section{Outline}
+
+This project will include choosing a WYSIWYG editor to replace iFixit’s current editor, building software to transform HTML tags into the equivalent wiki syntax, and building support for custom wiki tags which do not map directly to HTML tags. Custom wiki syntax includes syntax that renders into previews of Guide and Wiki pages on the iFixit.com. The input for the parser will be  either an HTML document or JSON object from the editor and transforming it into the corresponding wiki syntax. Tags to transform will include header, bold, italic, hyperlink, unordered lists, ordered lists, embedded images.
+
+\section{Tentative Schedule}
+
+\subsection{Spring Quarter 2016}
+
+\begin{itemize}
+\item Week 3:
+Define criteria for picking an editor.
+Investigate possible WYSIWYG editors.
+
+\item Week 4:
+Decide on editor, based on criteria decided on in Week 3
+
+\item Week 6:
+Research ways for integrating the library into iFixit.com’s current framework. Libraries written in ES6 may require using the Babel library to generate the equivalent ES5 JavaScript. Some libraries may also require a library like browserify to compile all of the library’s modules into a single JavaScript file.
+
+\item Week 8:
+Design a mapping of editor outputs to Wiki syntax. This will only include mapping that directly correlate to HTML tags, not custom iFixit Wiki tags.
+
+\item Week 10:
+Decide on which custom iFixit Wiki tags should be in the scope of this project. An example of a custom Wiki tag is \texttt{[guide|13470]}, which is rendered by iFixit’s framework into an HTML element with the title and main image from the guide with ID 13470. Rendering this tag requires a database lookup on the server and custom syntax in the editor, so implementing custom tags will require much more work than transforming static HTML tags into wiki text.
+
+\end{itemize}
+
+\subsection{Fall Quarter 2016}
+
+\begin{itemize}
+
+\item Week 2: Build in support for transforming bold syntax.
+
+\item Week 3: Build in support for transforming italics syntax.
+
+\item Week 4: Build in support for transforming underline syntax.
+
+\item Week 5: Build in support for transforming unordered list syntax.
+
+\item Week 6: Build in support for transforming ordered list syntax.
+
+\item Week 7: Build in support for transforming hyperlink syntax.
+
+\item Week 8: Build in support for transforming embedded video syntax.
+
+\item Week 10: Build in support for custom syntax decided in Week 10 of Senior Project I
+
+\end{itemize}
+
+\section{Description}
+
+This project satisfies the requirements of \textbf{independence}, \textbf{ownership}, \textbf{research}, and \textbf{creativity} for a senior project. Creating a parser and wiki text transformer is an isolated project that does not rely on the work of others at iFixit. I have been given the freedom to investigate and choose an editor that will produce output that is able to be parsed and transformed into iFixit's wiki syntax. Completing this project will require researching multiple different JavaScript-based editors and will require research to decide the best way to build a parser for this specific problem. It will also take creativity in deciding how best to represent iFixit's custom wiki syntax tags in the new editor, and how the parser will handle them.
+
+\end{document}
