@@ -1,0 +1,54 @@
+Senior Project Editor Criteria and Candidates
+--------------------------------
+
+Chris Opperwall
+
+1. Prosemirror (http://prosemirror.net)
+
+	1. Level of Documentation
+		Prosemirror has a reference guide with descriptions of each module, interface, class, and method in the editor. The website also contains demos to showcase different features of the editor.
+	2. Output Format
+		Prosemirror allows exporting the content of the editor in JSON, HTML, plain text, DOM Nodes, and Commonmark.
+	3. Input Rules
+		Prosemirror supports custom input rules that take a regular expression and a handler function to operate on the text that matches the given regular expression.
+	4. Custom Schema
+		Prosemirror supports custom document elements. This is helpful when displaying custom iFixit elements. One example is a custom "guide" element, which has a thumbnail image, a title, and a summary. Custom elements can also have specific parse rules, so that a "guide" element is serialized as a JSON object with a format such as
+		{
+			"type": "guide",
+			"guideid": 13470
+		}
+		This would make parsing custom iFixit wiki syntax much easier.
+	5. Library module format
+		Prosemirror uses the CommonJS module standard (http://wiki.commonjs.org/wiki/Modules/1.1) to reference its own modules. It also supports being bundled into a single JavaScript file through a third party module called browserify. The ability to bundle it into a single JavaScript file makes it much easier to include the library in iFixit's current framework.
+	6. Additional modules required
+		Prosemirror is written completely in ES6, so it will be necessary to use a cross-compiler such as Babel, which will transform ES6 code into valid ES5 code.
+
+2. Scribe (http://github.com/guardian/scribe)
+
+	1. Level of Documentation
+		Scribe's documentation is housed in a Github Wiki on their repo. The Wiki contains information about FAQs and creating plugins, but does not have a very specific reference on Scribe's internal functions.
+	2. Output Format
+		Scribe outputs the contents of the editor in HTML
+	3. Input Rules
+		Scribe includes a general plugin interface that allows developers to include functions to monitor and transform editor content. This could be used to build input rules, but is less specific than Prosemirror's input rule interface.
+	4. Custom Schema
+		Scribe has no builtin support for custom document elements.
+	5. Library Module Format
+		Scribe has historically used the AMD module format, which requires the requirejs package, but now includes a CommonJS/browserify method of including the library. Libraries that use the AMD module format are more difficult to include in iFixit's framework. 
+	6. Additional Modules Required
+		Scribe is written in ES6, so no cross-compiler is required.
+
+3. Trix (http://github.com/basecamp/trix)
+	
+	1. Level of Documentation
+		Documentation for Trix is mostly limited to a Github README, and does not include a reference guide.
+	2. Output Format
+		Trix outputs the contents of the editor in HTML
+	3. Input Rules
+		There is no built in support for input rules.
+	4. Custom Schema
+		There is no built in support for custom schema.
+	5. Library Module Format
+		Trix handles module importing through coffeescript.
+	6. Additional Modules Required
+		Trix is written in coffeescript, which requires a coffeescript to JavaScript compiler.
